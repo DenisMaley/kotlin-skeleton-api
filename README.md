@@ -39,6 +39,11 @@ Post user
 curl http://localhost:8081/user -H "content-type: application/json" -d "{ \"username\": \"test\", \"name\": \"test Test\", \"email\": \"test@test.com\"}"
 ```
 
+Post user with username 'secret' as an example to handle error
+```sh
+curl http://localhost:8081/user -H "content-type: application/json" -d "{ \"username\": \"secret\", \"name\": \"test Test\", \"email\": \"test@test.com\"}"
+```
+
 [Spring Boot]: https://spring.io/projects/spring-boot
 [Gradle]: https://gradle.org/
 [AppStatus]: http://localhost:8081/status
