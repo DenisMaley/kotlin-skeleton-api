@@ -1,5 +1,6 @@
 package skeleton
 
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import java.time.Instant
 
@@ -24,6 +25,9 @@ class AppController {
      */
     @RequestMapping(value = ["/user"], method = [RequestMethod.POST])
     fun createUser(@RequestBody user: NewUser): User {
+        if (user.username == "secret") {
+            throw IllegalArgumentException("Thank to ExceptionHandler that you see it.")
+        }
         return User(
             username = user.username,
             name = user.name,
@@ -31,4 +35,9 @@ class AppController {
             registered = Instant.now()
         )
     }
+
+    /** Handle the error */
+    @ExceptionHandler(IllegalArgumentException::class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    fun handleError(e: IllegalArgumentException) = e.message
 }
