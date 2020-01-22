@@ -25,6 +25,20 @@ If you see
  
 it means that everything went well.
 
+## Usage
+
+There are some endpoints:
+
+Get user
+```sh
+curl http://localhost:8081/user
+```
+
+Post user
+```sh
+curl http://localhost:8081/user -H "content-type: application/json" -d "{ \"username\": \"test\", \"name\": \"test Test\", \"email\": \"test@test.com\"}"
+```
+
 [Spring Boot]: https://spring.io/projects/spring-boot
 [Gradle]: https://gradle.org/
 [AppStatus]: http://localhost:8081/status
